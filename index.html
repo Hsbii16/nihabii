@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>To My Love ❤️</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <!-- Floating Hearts -->
+  <div class="hearts"></div>
+
+  <!-- 🎵 Background Music -->
+  <audio id="bgMusic" loop>
+    <source src="ordinary.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- 🌸 MAIN MENU -->
+  <div class="container" id="mainMenu">
+    <h1>To My Love ❤️</h1>
+    <div class="menu">
+      <a href="song.html" class="button"><button onclick="openSection('song')">🎵 Song</button></a>
+      <a href="love.html" class="button"><button onclick="openSection('loveSection')">💌 Love Letter</button></a>
+      <a href="video.html" class="button"><button onclick="openSection('videoSection')">🎥 Video</button></a>
+      <a href="gift.html" class="button"><button onclick="openSection('giftSection')">🎁 Gift</button></a>
+      
+    </div>
+  </div>
+
+
+
+
+  <script>
+    const bgMusic = document.getElementById("bgMusic");
+    const mainMenu = document.getElementById("mainMenu");
+    const sections = document.querySelectorAll(".section");
+
+    function openSection(id) {
+      mainMenu.style.display = "none"; // hide menu
+      sections.forEach(sec => sec.classList.add("hidden")); // hide all
+      document.getElementById(id).classList.remove("hidden"); // show clicked section
+      
+      if (id === "song") {
+        bgMusic.play();
+        alert("🎵 Song is now playing for you, my love!");
+      }
+    }
+
+    function goBack() {
+      sections.forEach(sec => sec.classList.add("hidden"));
+      mainMenu.style.display = "block"; // show menu again
+    }
+
+    // Floating hearts setup
+    const hearts = document.querySelector('.hearts');
+    for (let i = 0; i < 20; i++) {
+      let heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
+      hearts.appendChild(heart);
+    }
+  </script>
+</body>
+</html>
